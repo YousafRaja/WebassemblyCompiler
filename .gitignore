@@ -1,8 +1,8 @@
 Tests/
-.location.hh.swp
-./lex.yy.cc
-location.hh
-parser.tab.cc
-parser.tab.hh 
-position.hh
-stack.hh 
+.location.hh.swp*
+.lex.yy.cc*
+output.*
+location.hh*
+.tab.cc*
+.tab.hh*
+.hh*

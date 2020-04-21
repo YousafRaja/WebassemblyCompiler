@@ -1,0 +1,11 @@
+main(){
+	int a;
+	while(true){
+		int a;
+		a = a + 1;
+	}
+}
+
+
+
+

@@ -1,0 +1,8 @@
+main(){
+	boolean a;
+	a = 2;
+}
+
+
+
+

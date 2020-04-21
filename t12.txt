@@ -1,0 +1,12 @@
+int func(){
+	return 1;
+}
+
+main(){
+	boolean a;
+	a = func();
+}
+
+
+
+

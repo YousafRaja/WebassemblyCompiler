@@ -1,0 +1,26 @@
+
+void foo(int d){
+	prints("foo1:");
+	d = 5;
+	printi(d);
+	prints("\n");
+	bar();
+	prints("foo2:");
+	printi(d);
+	prints("\n");
+}
+
+void bar(){
+	prints("bar:");
+	printi(d);
+	prints("\n");
+	return;
+}
+
+int d;
+
+mane() {
+	d = 10;
+	foo(10);
+	prints("\n");
+}

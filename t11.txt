@@ -1,0 +1,11 @@
+int func(){
+	return;
+}
+
+main(){
+	int a;
+}
+
+
+
+

@@ -1,0 +1,11 @@
+boolean func(int b){
+	return true;
+}
+main(){
+	boolean test;
+	func(test);
+}
+
+
+
+

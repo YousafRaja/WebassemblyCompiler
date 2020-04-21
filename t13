@@ -1,0 +1,316 @@
+(module
+    (import "host" "exit" (func $exit))
+    (import "host" "putchar" (func $putchar (param i32)))
+    (import "host" "getchar" (func $getchar (result i32)))
+    (func $reverse (local $c i32)
+        call  $getchar
+        local.set $c
+        (if
+            (block (result i32)
+                local.get $c
+                global.get $NL
+                i32.ne
+            )
+            (then 
+                call  $reverse
+                local.get $c
+                call  $printc
+            )
+        )
+    )
+    (global $NL (mut i32) (i32.const 0) )
+    (func $main
+        i32.const 10
+        global.set $NL
+        call  $reverse
+    )
+    (start $main)
+;;
+;;
+;; RTS
+;;
+;;
+  (func $add (param $lhs i32) (param $rhs i32) (result i32)
+    local.get $lhs
+    local.get $rhs	
+    i32.add)
+
+  (export "add" (func $add))
+  
+  (func $printc (param $p i32)
+    local.get $p
+	call $putchar)
+  (export "printc" (func $printc))
+
+
+  (func $db 
+    i32.const 65
+	call $putchar)
+  (export "$db" (func $db))
+	
+  
+  
+  (func $printd (param $x i32)
+    i32.const 48
+    get_local $x
+    i32.add
+    call $putchar	
+  )  
+  (export "printd" (func $printd))
+	
+
+
+  (func $prints (param $x i32) (param $y i32)
+   (if
+    (i32.lt_s
+     (get_local $x)
+     (get_local $y)
+    )
+    (then	 
+	 (get_local $x)
+	 (i32.load)
+	 (call $putchar)
+     (get_local $x)
+	 (i32.const 1)
+	 (i32.add)
+	 (get_local $y)
+	 (call $prints)	 
+    )    
+   )
+  )  
+  (export "prints" (func $prints))
+  
+  
+  
+
+  
+  (func $rint (param $x i32) (param $m i32) (result i32)
+   (if (result i32)
+    (i32.ne
+	  (get_local $x)
+      (i32.const 0)      
+    )
+    (then	 
+	  local.get $m
+	  i32.const 10
+	  i32.mul
+	  local.set $m	 
+	  
+	  local.get $x
+	  i32.const 10
+	  i32.rem_s	  
+	  local.get $m
+	  i32.add 
+	  local.set $m    
+	  
+	  local.get $x
+	  i32.const 10
+	  i32.div_s
+      local.set $x 	
+	  
+	  local.get $x
+	  local.get $m
+	  call $rint		
+	  
+    )(else 
+		local.get $m
+	 )
+   )
+  )  
+  (export "rint" (func $rint))
+  
+  (func $rprinti (param $x i32) (param $i i32) 
+   (if
+    (i32.ne
+	  (get_local $i)
+      (i32.const 0)      
+    )
+    (then	 	  	 
+	
+	  local.get $x
+	  i32.const 10
+	  i32.rem_u
+	  call $printd	  
+	  
+	  local.get $x
+	  i32.const 10
+	  i32.div_u	  	
+	  local.set $x
+
+	  local.get $i
+	  i32.const 1
+	  i32.sub	  
+	  local.set $i
+	  
+	  local.get $x
+	  local.get $i	  
+	  call $rprinti
+    )
+   )
+  )  
+  (export "rprinti" (func $rprinti))
+  
+  (func $getilen (param $x i32) (param $i i32) (result i32)
+   (if (result i32)
+    (i32.ne
+	  (get_local $x)
+      (i32.const 0)      
+    )
+    (then	 	  	  	  	  
+	  local.get $x
+	  i32.const 10
+	  i32.div_u	  	  
+	  local.set $x
+	  
+	  local.get $i 
+	  i32.const 1 
+	  i32.add 
+	  local.set $i	 
+	  
+	  local.get $x 
+	  local.get $i 
+	  
+	  call $getilen
+    )(else 
+		local.get $i 
+	)
+   )
+  )  
+  (export "getilen" (func $getilen))
+  
+  
+  (func $printi_nz (param $x i32) (param $l i32)
+   (if
+    (i32.lt_s
+	  (get_local $x)
+      (i32.const 0)      
+    )
+    (then	 	
+	
+		local.get $x
+		i32.const -1
+		i32.mul
+		local.set $x
+		
+		i32.const 45
+		call $printc
+	
+	    local.get $x
+		local.get $l
+		call $getilen
+		local.set $l
+		
+		
+	
+	
+
+	  
+	  local.get $x
+	  i32.const 0
+	  call $rint
+	  local.get $l 
+	  call $rprinti	  
+    )
+	(else
+		local.get $x
+		local.get $l
+		call $getilen
+		local.set $l
+		
+
+
+		local.get $x
+		i32.const 0
+		call $rint
+		local.get $l 
+		call $rprinti	
+	)
+   )
+  )  
+  (export "printi_nz" (func $printi_nz))
+  
+  
+(func $printi_inrange (param $x i32)
+   (if
+    (i32.ne
+	  (get_local $x)
+      (i32.const 0)      
+    )
+    (then	 
+		local.get $x		
+		i32.const 0 		
+		(call $printi_nz)	   
+    )
+	(else
+		i32.const 0 
+		call $printd
+	)
+   )
+  )  
+  (export "printi_inrange" (func $printi_inrange))
+  
+  (func $printi (param $x i32)
+   (if
+    (i32.eq
+	  (get_local $x)
+      (i32.const -2147483648)      
+    )
+    (then	 
+		i32.const 45
+		call $printc
+		i32.const 21474
+        call  $printi
+		i32.const 83648
+        call  $printi
+    )
+	(else
+		local.get $x		
+		(call $printi_inrange)	   
+		)
+	)
+)  
+  (export "printi" (func $printi))
+  
+  
+  
+(func $printb (param $x i32)
+   (if
+    (i32.eq
+	  (get_local $x)
+	  (i32.const 1)     
+    )
+    (then	 
+	 (i32.const 116)	 
+	 (call $putchar) 
+	 (i32.const 114)	 
+	 (call $putchar) 
+	 (i32.const 117)	 
+	 (call $putchar) 
+	 (i32.const 101)	 
+	 (call $putchar) 
+    )
+	(else			
+	 (i32.const 102)	 
+	 (call $putchar) 
+	 (i32.const 97)	 
+	 (call $putchar) 
+	 (i32.const 108)	 
+	 (call $putchar) 
+	 (i32.const 115)	 
+	 (call $putchar) 
+	 (i32.const 101)	 
+	 (call $putchar) 
+	)    
+   )
+  )   
+  (export "printb" (func $printb))
+  
+  
+  (func $halt     
+	call $exit)
+  (export "$halt" (func $halt))
+
+
+
+(memory 1)
+)

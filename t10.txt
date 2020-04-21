@@ -1,0 +1,10 @@
+void func(){
+	return 1;
+}
+
+main(){
+}
+
+
+
+

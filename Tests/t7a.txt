@@ -1,9 +1,0 @@
-main(){
-	while(true){
-		break;
-	}
-}
-
-
-
-

@@ -21,7 +21,7 @@ A subset of Java. For more information, see J--LanguageSpec.txt.
 
 ## How it works
 
-Lexical Analysis 
+###### Lexical Analysis 
 
 The input file goes through a lexical analysis which is implemented in lex.l using the Flex library. 
 

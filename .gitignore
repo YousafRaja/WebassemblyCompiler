@@ -1,6 +1,6 @@
 Tests/
 .location.hh.swp
-lex.yy.cc
+./lex.yy.cc
 location.hh
 parser.tab.cc
 parser.tab.hh 

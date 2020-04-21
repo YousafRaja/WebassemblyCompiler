@@ -10,12 +10,12 @@ WAT stands for WebAssembly Text Format. For more information, see https://develo
 
 ## JMinusMinus
 
-A subset of Java. For more information, see J--LanguageSpec.txt.
+A subset of Java. For more information, see JMinusMinusLanguageSpec.txt.
 
 ## How to run 
 
 1. Make sure you have the correct version of Bison and Flex installed, run make all. 
-2. Run ./compiler.out and pass in a file with J-- code and redirect the output to another file. For example, 
+2. Run ./compiler.out and pass in a file with JMinusMinus code and redirect the output to another file. For example, 
 ./compiler.out input.txt > output 
 3. The output file should now contain WAT code and can be sent to a WASM interpretor. 
 
@@ -27,7 +27,7 @@ The input file goes through a lexical analysis which is implemented in lex.l usi
 
 ###### Defining the Grammar 
 
-After passing lexical analysis it is sent to the parser which constructs the AST as per the J-- specs, this is handled in parser.yy.
+After passing lexical analysis it is sent to the parser which constructs the AST as per the JMinusMinus specs, this is handled in parser.yy.
 
 ###### Semantic Checking
 

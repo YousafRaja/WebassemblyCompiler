@@ -10,7 +10,7 @@ WAT stands for WebAssembly Text Format. For more information, see https://develo
 
 ## J--
 
-A subset of Java. For more information, see See J--LanguageSpec.txt.
+A subset of Java. For more information, see J--LanguageSpec.txt.
 
 ## Requirements
 

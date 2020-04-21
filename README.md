@@ -2,13 +2,13 @@
 
 ## Description
 
-Compiles J-- code to WAT code which can then be run through a WASM interpretor.
+Compiles JMinusMinus code to WAT code which can then be run through a WASM interpretor.
 
 ## WAT
 
 WAT stands for WebAssembly Text Format. For more information, see https://developer.mozilla.org/en-US/docs/WebAssembly
 
-## J--
+## JMinusMinus
 
 A subset of Java. For more information, see J--LanguageSpec.txt.
 

@@ -10,7 +10,7 @@ WAT stands for WebAssembly Text Format. For more information, see https://develo
 
 ## JMinusMinus
 
-A subset of Java. For more information, see JMinusMinusLanguageSpec.txt.
+This language is basically just a subset of Java. May update this with more details later.
 
 ## How to run 
 
